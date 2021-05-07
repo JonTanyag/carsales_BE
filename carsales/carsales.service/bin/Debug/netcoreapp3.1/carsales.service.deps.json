@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "carsales.service/1.0.0": {
+        "dependencies": {
+          "carsales.data": "1.0.0"
+        },
+        "runtime": {
+          "carsales.service.dll": {}
+        }
+      },
+      "carsales.data/1.0.0": {
+        "runtime": {
+          "carsales.data.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "carsales.service/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "carsales.data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

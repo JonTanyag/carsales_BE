@@ -1,0 +1,12 @@
+C:\ThinkingCap\dev\exam\carsales\backend\carsales_BE\carsales\carsales.service\bin\Debug\netcoreapp3.1\carsales.service.deps.json
+C:\ThinkingCap\dev\exam\carsales\backend\carsales_BE\carsales\carsales.service\bin\Debug\netcoreapp3.1\carsales.service.dll
+C:\ThinkingCap\dev\exam\carsales\backend\carsales_BE\carsales\carsales.service\bin\Debug\netcoreapp3.1\carsales.service.pdb
+C:\ThinkingCap\dev\exam\carsales\backend\carsales_BE\carsales\carsales.service\bin\Debug\netcoreapp3.1\carsales.data.dll
+C:\ThinkingCap\dev\exam\carsales\backend\carsales_BE\carsales\carsales.service\bin\Debug\netcoreapp3.1\carsales.data.pdb
+C:\ThinkingCap\dev\exam\carsales\backend\carsales_BE\carsales\carsales.service\obj\Debug\netcoreapp3.1\carsales.service.csprojAssemblyReference.cache
+C:\ThinkingCap\dev\exam\carsales\backend\carsales_BE\carsales\carsales.service\obj\Debug\netcoreapp3.1\carsales.service.AssemblyInfoInputs.cache
+C:\ThinkingCap\dev\exam\carsales\backend\carsales_BE\carsales\carsales.service\obj\Debug\netcoreapp3.1\carsales.service.AssemblyInfo.cs
+C:\ThinkingCap\dev\exam\carsales\backend\carsales_BE\carsales\carsales.service\obj\Debug\netcoreapp3.1\carsales.service.csproj.CoreCompileInputs.cache
+C:\ThinkingCap\dev\exam\carsales\backend\carsales_BE\carsales\carsales.service\obj\Debug\netcoreapp3.1\carsales.service.csproj.CopyComplete
+C:\ThinkingCap\dev\exam\carsales\backend\carsales_BE\carsales\carsales.service\obj\Debug\netcoreapp3.1\carsales.service.dll
+C:\ThinkingCap\dev\exam\carsales\backend\carsales_BE\carsales\carsales.service\obj\Debug\netcoreapp3.1\carsales.service.pdb

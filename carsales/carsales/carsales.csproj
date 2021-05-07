@@ -4,5 +4,14 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\carsales.data\carsales.data.csproj" />
+    <ProjectReference Include="..\carsales.service\carsales.service.csproj" />
+  </ItemGroup>
+
 
 </Project>
