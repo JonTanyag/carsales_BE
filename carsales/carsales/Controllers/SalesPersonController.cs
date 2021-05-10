@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using carsales.data.Models;
+using carsales.service.Interface;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +14,27 @@ namespace carsales.Controllers
     [ApiController]
     public class SalesPersonController : ControllerBase
     {
+        private readonly ISalesPersonService _salesPersonService;
+        public SalesPersonController(ISalesPersonService salesPersonService)
+        {
+            _salesPersonService = salesPersonService;
+        }
+
         // GET: api/<SalesPersonController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public SalesPersonModel Get()
         {
-            return new string[] { "value1", "value2" };
+            var salesPersons = _salesPersonService.GetAll();
+
+            return salesPersons;
+        }
+
+        [HttpGet("customer-data")]
+        public SalesCustomerModel GetCustomerData()
+        {
+            var salesPersons = _salesPersonService.GetCustomerData();
+
+            return salesPersons;
         }
 
         // GET api/<SalesPersonController>/5
@@ -28,8 +46,9 @@ namespace carsales.Controllers
 
         // POST api/<SalesPersonController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public string Post([FromBody]PayloadModel payload)
         {
+            return _salesPersonService.AssignSalesPerson(payload);
         }
 
         // PUT api/<SalesPersonController>/5

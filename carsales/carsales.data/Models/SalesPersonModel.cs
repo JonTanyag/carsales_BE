@@ -1,4 +1,5 @@
-﻿using System;
+﻿using carsales.data.Entity;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,8 +7,6 @@ namespace carsales.data.Models
 {
     public class SalesPersonModel
     {
-        public string Name { get; set; }
-        public List<GroupModel> Groups { get; set; }
-        public bool isAvailable { get; set; }
+        public List<SalesPerson> SalesPerson { get; set; }
     }
 }

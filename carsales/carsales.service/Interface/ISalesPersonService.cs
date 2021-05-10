@@ -7,7 +7,9 @@ namespace carsales.service.Interface
 {
     public interface ISalesPersonService
     {
+        SalesPersonModel GetAllSalesPerson();
         SalesPersonModel GetAll();
-        void AssignSalesPerson(CarType carType, Language lang);
+        SalesCustomerModel GetCustomerData();
+        string AssignSalesPerson(PayloadModel payload);
     }
 }

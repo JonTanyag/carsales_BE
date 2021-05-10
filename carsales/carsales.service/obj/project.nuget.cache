@@ -1,8 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "mJjVanRijWP2ZyrXmC+8Hj2xshX8O3Q0PThd1smbPVExRjxOIYi+pSyOL6ZV0fJy7ssYQS4Nh+8XDnmTMLjWLQ==",
+  "dgSpecHash": "L0zwF7khFSlYI7NzrS113tA+aHW9LUHcBQnGyFoXL8LX5tCa6guiwNuS4QaHuedGxQtom8x9Z3Cb1GYe/VvdPw==",
   "success": true,
   "projectFilePath": "C:\\ThinkingCap\\dev\\exam\\carsales\\backend\\carsales_BE\\carsales\\carsales.service\\carsales.service.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Jon\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\Jon\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
+    "C:\\Users\\Jon\\.nuget\\packages\\system.configuration.configurationmanager\\5.0.0\\system.configuration.configurationmanager.5.0.0.nupkg.sha512",
+    "C:\\Users\\Jon\\.nuget\\packages\\system.drawing.common\\5.0.0\\system.drawing.common.5.0.0.nupkg.sha512",
+    "C:\\Users\\Jon\\.nuget\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",
+    "C:\\Users\\Jon\\.nuget\\packages\\system.security.cryptography.protecteddata\\5.0.0\\system.security.cryptography.protecteddata.5.0.0.nupkg.sha512",
+    "C:\\Users\\Jon\\.nuget\\packages\\system.security.permissions\\5.0.0\\system.security.permissions.5.0.0.nupkg.sha512",
+    "C:\\Users\\Jon\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512",
+    "C:\\Users\\Jon\\.nuget\\packages\\system.windows.extensions\\5.0.0\\system.windows.extensions.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
