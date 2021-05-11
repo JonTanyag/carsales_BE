@@ -8,3 +8,4 @@ C:\ThinkingCap\dev\exam\carsales\backend\carsales_BE\carsales\carsales.data\obj\
 C:\ThinkingCap\dev\exam\carsales\backend\carsales_BE\carsales\carsales.data\obj\Debug\netcoreapp3.1\carsales.data.csproj.CoreCompileInputs.cache
 C:\ThinkingCap\dev\exam\carsales\backend\carsales_BE\carsales\carsales.data\obj\Debug\netcoreapp3.1\carsales.data.dll
 C:\ThinkingCap\dev\exam\carsales\backend\carsales_BE\carsales\carsales.data\obj\Debug\netcoreapp3.1\carsales.data.pdb
+C:\ThinkingCap\dev\exam\carsales\backend\carsales_BE\carsales\carsales.data\obj\Debug\netcoreapp3.1\carsales.data.csprojAssemblyReference.cache

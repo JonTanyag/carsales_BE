@@ -1,1 +1,42 @@
-[{"Name":"Cierra Vega","Groups":["A"],"isAvailable":true},{"Name":"Alden Cantrell","Groups":["B","D"],"isAvailable":true},{"Name":"Kierra Gentry","Groups":["A","C"],"isAvailable":true},{"Name":"Pierre Cox","Groups":["D"],"isAvailable":true},{"Name":"Thomas Crane","Groups":["A","B"],"isAvailable":true},{"Name":"Miranda Shaffer","Groups":["B"],"isAvailable":true},{"Name":"Bradyn Kramer","Groups":["D"],"isAvailable":true},{"Name":"Alvaro Mcgee","Groups":["A","D","C"],"isAvailable":true},{"Name":"Thomas Crane","Groups":["A","B"],"isAvailable":false}]
+[
+  {
+    "Name": "Cierra Vega",
+    "Groups": [ "A" ],
+    "isAvailable":  true
+  },
+  {
+    "Name": "Alden Cantrell",
+    "Groups": [ "B", "D" ],
+    "isAvailable": true
+  },
+  {
+    "Name": "Kierra Gentry",
+    "Groups": [ "A", "C" ],
+    "isAvailable": true
+  },
+  {
+    "Name": "Pierre Cox",
+    "Groups": [ "D" ],
+    "isAvailable": true
+  },
+  {
+    "Name": "Thomas Crane",
+    "Groups": [ "A", "B" ],
+    "isAvailable": true
+  },
+  {
+    "Name": "Miranda Shaffer",
+    "Groups": [ "B" ],
+    "isAvailable": true
+  },
+  {
+    "Name": "Bradyn Kramer",
+    "Groups": [ "D" ],
+    "isAvailable": true
+  },
+  {
+    "Name": "Alvaro Mcgee",
+    "Groups": [ "A", "D", "C" ],
+    "isAvailable": true
+  }
+]
