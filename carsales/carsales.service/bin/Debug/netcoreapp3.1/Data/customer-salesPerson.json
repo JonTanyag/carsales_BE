@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "CustomerName": "string",
+    "SalesName": "Thomas Crane",
+    "Car": "SportsCar",
+    "Language": "Greek"
+  },
+  {
+    "CustomerName": "string",
+    "SalesName": "Thomas Crane",
+    "Car": "SportsCar",
+    "Language": "Greek"
+  }
+]

@@ -24,7 +24,7 @@ namespace carsales.Controllers
         [HttpGet]
         public SalesPersonModel Get()
         {
-            var salesPersons = _salesPersonService.GetAll();
+            var salesPersons = _salesPersonService.GetAllSalesPerson();
 
             return salesPersons;
         }
@@ -46,9 +46,9 @@ namespace carsales.Controllers
 
         // POST api/<SalesPersonController>
         [HttpPost]
-        public string Post([FromBody]PayloadModel payload)
+        public async Task<ActionResult> Post([FromBody]PayloadModel payload)
         {
-            return _salesPersonService.AssignSalesPerson(payload);
+            return Ok(await _salesPersonService.AssignSalesPerson(payload));
         }
 
         // PUT api/<SalesPersonController>/5

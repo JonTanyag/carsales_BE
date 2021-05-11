@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace carsales.service.Interface
 {
@@ -10,6 +11,6 @@ namespace carsales.service.Interface
         SalesPersonModel GetAllSalesPerson();
         SalesPersonModel GetAll();
         SalesCustomerModel GetCustomerData();
-        string AssignSalesPerson(PayloadModel payload);
+        Task<string> AssignSalesPerson(PayloadModel payload);
     }
 }

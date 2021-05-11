@@ -9,26 +9,19 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Threading.Tasks;
+using System.Xml;
 
 namespace carsales.service.Service
 {
     public class SalesPersonService : ISalesPersonService
     {
 
-        private static string destinationPath = @"..\..\..\carsales_BE\carsales\carsales.data\Data\customer-salesPerson.json";
-        private static string destinationJsonString = File.ReadAllText(@"..\..\..\carsales_BE\carsales\carsales.data\Data\customer-salesPerson.json");
+        SalesPerson person = new SalesPerson();
 
-        private static string sourcePath = @"..\..\..\carsales_BE\carsales\carsales.data\Data\salesperson.json";
-        private static string sourceJsonString = File.ReadAllText(@"..\..\..\carsales_BE\carsales\carsales.data\Data\salesperson.json");
-
-        private List<SalesPerson> salesPersons = JsonSerializer.Deserialize<List<SalesPerson>>(sourceJsonString);
-        private List<SalesCustomer> customerData = JsonSerializer.Deserialize<List<SalesCustomer>>(destinationJsonString);
-        private SalesPerson person = new SalesPerson();
-        private SalesCustomer customer = new SalesCustomer();
-
-        public string AssignSalesPerson(PayloadModel payload)
+        public async Task<string> AssignSalesPerson(PayloadModel payload)
         {
-            return AssignPerson(payload);
+            return await AssignPerson(payload);
         }
 
         public SalesPersonModel GetAll()
@@ -44,6 +37,7 @@ namespace carsales.service.Service
 
         private SalesPersonModel GetSalesPerson()
         {
+            string sourceJsonString = File.ReadAllText(@"..\..\..\carsales_BE\carsales\carsales.data\Data\salesperson.json");
             var salesPersons = JsonSerializer.Deserialize<List<SalesPerson>>(sourceJsonString);
 
             SalesPersonModel persons = new SalesPersonModel();
@@ -54,6 +48,7 @@ namespace carsales.service.Service
 
         public SalesCustomerModel GetCustomerData()
         {
+            string destinationJsonString = File.ReadAllText(@"..\..\..\carsales_BE\carsales\carsales.data\Data\customer-salesPerson.json");
             var customers = JsonSerializer.Deserialize<List<SalesCustomer>>(destinationJsonString);
 
             SalesCustomerModel customerModel = new SalesCustomerModel();
@@ -62,31 +57,35 @@ namespace carsales.service.Service
             return customerModel;
         }
 
-        private string AssignPerson(PayloadModel payload)
+        private async Task<string> AssignPerson(PayloadModel payload)
         {
             string result = string.Empty;
             switch (payload.CarType)
             {
                 case CarType.SportsCar:
-                    result = UpdateStatus(GroupConstants.B, payload);
+                    result = await UpdateStatus(GroupConstants.B, payload);
                     break;
                 case CarType.FamilyCar:
-                    result = UpdateStatus(GroupConstants.C, payload);
+                    result = await UpdateStatus(GroupConstants.C, payload);
                     break;
                 case CarType.TradieVehicle:
-                    result = UpdateStatus(GroupConstants.D, payload);
+                    result = await UpdateStatus(GroupConstants.D, payload);
                     break;
                 case CarType.Unspecific:
-                    result = UpdateStatus(GroupConstants.NA, payload);
+                    result = await UpdateStatus(GroupConstants.NA, payload);
                     break;
                 default:
                     break;
             }
             return result;
         }
-        
-        private string UpdateStatus(string group, PayloadModel payload)
+
+        private async Task<string> UpdateStatus(string group, PayloadModel payload)
         {
+            string sourceJsonString = File.ReadAllText(@"..\..\..\carsales_BE\carsales\carsales.data\Data\salesperson.json");
+            string sourcePath = @"..\..\..\carsales_BE\carsales\carsales.data\Data\salesperson.json";
+            var salesPersons = JsonSerializer.Deserialize<List<SalesPerson>>(sourceJsonString);
+            
             bool personFound = false;
             do
             {
@@ -97,7 +96,7 @@ namespace carsales.service.Service
                     {
                         personFound = true;
                         break;
-                    }                       
+                    }
                     else
                     {
                         person = LookforSalesPerson(group, false);
@@ -108,28 +107,44 @@ namespace carsales.service.Service
                         }
                     }
                     if (person == null)
-                        person = GetRandomSalesPerson();                     
+                        person = GetRandomSalesPerson();
                 }
                 else
+                {
                     person = salesPersons.FirstOrDefault(x => x.isAvailable && x.Groups.Contains(group));
+                    if (person != null)
+                    {
+                        personFound = true;
+                        break;
+                    }
+                    else
+                    {
+                        person = GetRandomSalesPerson();
+                        if (person != null)
+                        {
+                            personFound = true;
+                            break;
+                        }
+                    }
+                }
+                    
 
                 if (person == null)
                     return GroupConstants.SalesPersonBusy;
 
             } while (personFound);
-            
-                        
-            salesPersons.Remove(person);
+
+
+            var check = salesPersons.Remove(salesPersons.FirstOrDefault(x => x.Name == person.Name));
             salesPersons.Add(new SalesPerson()
             {
                 Name = person.Name,
                 Groups = person.Groups,
                 isAvailable = false
             });
-
-            string json = JsonSerializer.Serialize(salesPersons);
-            File.WriteAllText(sourcePath, json);
             
+            string newJson = JsonSerializer.Serialize(salesPersons);
+            await File.WriteAllTextAsync(sourcePath, newJson);
             var dt = new SalesCustomer
             {
                 CustomerName = payload.Customer,
@@ -138,6 +153,7 @@ namespace carsales.service.Service
                 Car = MapCar(payload.CarType)
             };
 
+            //save customer data
             Save(dt);
 
             return string.Format("{0} was assigned. Thank you.", person.Name);
@@ -145,24 +161,40 @@ namespace carsales.service.Service
 
         private SalesPerson LookforSalesPerson(string group, bool isGreekSpeaking)
         {
+            string sourceJsonString = File.ReadAllText(@"..\..\..\carsales_BE\carsales\carsales.data\Data\salesperson.json");
+            var salesPersons = JsonSerializer.Deserialize<List<SalesPerson>>(sourceJsonString);
+            SalesPerson person = new SalesPerson();
+
             if (isGreekSpeaking)
                 person = salesPersons.FirstOrDefault(x => x.isAvailable && x.Groups.Contains(group) && x.Groups.Contains(GroupConstants.A));
             else
                 person = salesPersons.FirstOrDefault(x => x.isAvailable && x.Groups.Contains(group));
-                        
+
             return person;
         }
         private SalesPerson GetRandomSalesPerson()
         {
+            string sourceJsonString = File.ReadAllText(@"..\..\..\carsales_BE\carsales\carsales.data\Data\salesperson.json");
+            var salesPersons = JsonSerializer.Deserialize<List<SalesPerson>>(sourceJsonString);
+            SalesPerson person = new SalesPerson();
             // get the first available sales person when there is no available for the given group.
             // No sense to create extra logic for getting random available sales person.
             return person = salesPersons.FirstOrDefault(x => x.isAvailable);
         }
 
-        private void Save(SalesCustomer salesCustomer)
+        private async void Save(SalesCustomer salesCustomer)
         {
+            string destinationPath = @"..\..\..\carsales_BE\carsales\carsales.data\Data\customer-salesPerson.json";
+            string destinationJsonString = File.ReadAllText(@"..\..\..\carsales_BE\carsales\carsales.data\Data\customer-salesPerson.json");
+            var customerData = JsonSerializer.Deserialize<List<SalesCustomer>>(destinationJsonString);
+            SalesCustomer customer = new SalesCustomer();
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true,
+            };
+
             if (customerData != null)
-                customerData.Remove(customer); 
+                customerData.Remove(customer);
             
             customerData.Add(new SalesCustomer()
             {
@@ -172,9 +204,9 @@ namespace carsales.service.Service
                 SalesName = salesCustomer.SalesName
             });
 
-            string json = JsonSerializer.Serialize(customerData);
-            File.WriteAllText(destinationPath, json);
-        }        
+            string newJson = JsonSerializer.Serialize(customerData, options);
+            File.WriteAllText(destinationPath, newJson);
+        }
 
         private string MapCar(CarType carType)
         {
